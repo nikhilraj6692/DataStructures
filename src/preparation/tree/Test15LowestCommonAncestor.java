@@ -52,10 +52,10 @@ public class Test15LowestCommonAncestor {
         list.add(root.data);
         if(root == node)
             return true;
-        if(root.left!=null && findPathApproach1(root.left, node, list))
+
+        if(findPathApproach1(root.left, node, list) || findPathApproach1(root.right, node, list))
             return true;
-        if(root.right!=null && findPathApproach1(root.right, node, list))
-            return true;
+
 
         list.remove(list.size()-1);
         return false;

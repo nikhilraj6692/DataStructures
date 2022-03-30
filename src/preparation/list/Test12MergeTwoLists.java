@@ -1,7 +1,7 @@
 package preparation.list;
 
 /*
-merge like 1->4-->2->5->6->7...only two conditions to take care...a)always take next backup of both ll node
+merge like 1->4->2->5->6->7...only two conditions to take care...a)always take next backup of both ll node
 b)check lastly if any ll is not empty in case you have to merge remaining part also
  */
 public class Test12MergeTwoLists {

@@ -1,5 +1,7 @@
 package preparation.stack;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import preparation.util.Pair;
 
 import java.util.Stack;
@@ -9,7 +11,25 @@ in this algo we have to find most max to left and right of a given element and t
 such outputs
  */
 public class Test10RainWaterTrappingProblem {
+
+    private static class A{
+
+    }
     public static void main(String[] args) {
+        HashMap m = new HashMap();
+        Object o1= new Object();
+        Object o2 = o1;
+        m.put(o1,1);
+        m.put(o2,2);
+
+        System.out.println(m.get(o1));
+
+        HashSet s = new HashSet();
+        s.add(new Integer(1));
+        s.add(new Integer(1));
+        s.add(new Integer(2));
+        System.out.println(s.size());
+
         int[] arr = { 0, 1, 0, 2, 1, 0,
                 1, 3, 2, 1, 2, 1 };
         int n = arr.length;

@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Test07TopViewOfTree {
     public static void main(String[] args) {
-        Node node = TreeBuilder.buildTree3();
+        Node node = TreeBuilder.buildTree2();
         findTopViewOfTree(node);
 
         System.out.println();

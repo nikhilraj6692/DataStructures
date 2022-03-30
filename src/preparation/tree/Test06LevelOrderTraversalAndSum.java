@@ -49,7 +49,7 @@ public class Test06LevelOrderTraversalAndSum {
                 level = map.get(temp);
                 map.put(temp.right, ++level);
             }
-            maxLevel = Math.max(maxLevel, level);
+            //maxLevel = Math.max(maxLevel, level);
         }
 
         int[] sum = new int[level+1];
