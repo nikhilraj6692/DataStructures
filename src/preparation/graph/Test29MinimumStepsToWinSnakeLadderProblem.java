@@ -1,16 +1,16 @@
 package preparation.graph;
 
-import preparation.util.Node;
-import preparation.util.VNode;
-
-import java.awt.desktop.SystemEventListener;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
+import preparation.util.Node;
 
-public class Test29MinimumStepsToWinSnakeLadderProblem {
-    public static void main(String[] args) {
+public class Test29MinimumStepsToWinSnakeLadderProblem
+{
+
+    public static void main(String[] args)
+    {
         // snakes and ladders are represented using a map.
         Map<Integer, Integer> ladder = new HashMap();
         Map<Integer, Integer> snake = new HashMap();
@@ -39,31 +39,39 @@ public class Test29MinimumStepsToWinSnakeLadderProblem {
         System.out.print(steps);
     }
 
-    private static int findSolution(Map<Integer, Integer> ladder, Map<Integer, Integer> snake) {
-        Node<Integer> src = new Node<>(0,0);
+    private static int findSolution(Map<Integer, Integer> ladder, Map<Integer, Integer> snake)
+    {
+        Node<Integer> src = new Node<>(0, 0);
         Queue<Node<Integer>> q = new LinkedList<>();
         q.add(src);
 
         int[] possibleDiceRolls = {1, 2, 3, 4, 5, 6};
 
-        while(!q.isEmpty()){
+        while (!q.isEmpty())
+        {
             Node<Integer> curr = q.poll();
 
-            if(curr.data == 100){
+            if (curr.data == 100)
+            {
                 return curr.step;
             }
 
             boolean ladderOrSnakeFound = false;
-            for(int i=0; i<possibleDiceRolls.length; i++) {
-                int v = possibleDiceRolls[i] + curr.data;;
-                if (ladder.containsKey(v)) {
+            for (int i = 0; i < possibleDiceRolls.length; i++)
+            {
+                int v = possibleDiceRolls[i] + curr.data;
+                ;
+                if (ladder.containsKey(v))
+                {
                     q.add(new Node(ladder.get(v), curr.step + 1));
 
-                } else if (snake.containsKey(v)) {
+                } else if (snake.containsKey(v))
+                {
                     q.add(new Node(snake.get(v), curr.step + 1));
 
-                } else{
-                    q.add(new Node<>(v, curr.step+1));
+                } else
+                {
+                    q.add(new Node<>(v, curr.step + 1));
                 }
 
             }

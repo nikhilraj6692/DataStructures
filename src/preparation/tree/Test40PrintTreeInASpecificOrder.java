@@ -1,14 +1,23 @@
 package preparation.tree;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.TreeMap;
 import preparation.util.Node;
 import preparation.util.TreeBuilder;
 
-import java.util.*;
+public class Test40PrintTreeInASpecificOrder
+{
 
-public class Test40PrintTreeInASpecificOrder {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Node<Integer> root = TreeBuilder.buildTree10();
-        Map<Integer, List<Node>> map = new TreeMap<>();;
+        Map<Integer, List<Node>> map = new TreeMap<>();
+        ;
         traverseInSpecificOrderWithHashing(map, 0, root);
         printMap(map);
 
@@ -27,23 +36,32 @@ public class Test40PrintTreeInASpecificOrder {
 
     }
 
-    private static void traverseInSpecificOrderWithRecursionAndHashing(Map<Integer, List<Node>> map, int level, Node<Integer> root) {
-        if(root == null)
+    private static void traverseInSpecificOrderWithRecursionAndHashing(Map<Integer, List<Node>> map,
+        int level, Node<Integer> root)
+    {
+        if (root == null)
+        {
             return;
-        map.computeIfAbsent(level, k->new ArrayList<>()).add(root);
-        traverseInSpecificOrderWithRecursionAndHashing(map, level+1, root.left);
-        traverseInSpecificOrderWithRecursionAndHashing(map, level+1, root.right);
+        }
+        map.computeIfAbsent(level, k -> new ArrayList<>()).add(root);
+        traverseInSpecificOrderWithRecursionAndHashing(map, level + 1, root.left);
+        traverseInSpecificOrderWithRecursionAndHashing(map, level + 1, root.right);
     }
 
-    private static void printMap(Map<Integer, List<Node>> map) {
-        for (Map.Entry<Integer, List<Node>> entry : map.entrySet()) {
+    private static void printMap(Map<Integer, List<Node>> map)
+    {
+        for (Map.Entry<Integer, List<Node>> entry : map.entrySet())
+        {
             List<Node> val = entry.getValue();
             int i = 0, j = val.size() - 1;
 
-            while (i <= j) {
-                if (i == j) {
+            while (i <= j)
+            {
+                if (i == j)
+                {
                     System.out.print(val.get(i).data + " ");
-                } else {
+                } else
+                {
                     System.out.print(val.get(i).data + " " + val.get(j).data + " ");
                 }
                 i++;
@@ -52,23 +70,29 @@ public class Test40PrintTreeInASpecificOrder {
         }
     }
 
-    private static void traverseInSpecificOrderWithHashing(Map<Integer, List<Node>> map, int level, Node<Integer> node) {
-        Queue<Node<Integer>> q= new LinkedList<>();
+    private static void traverseInSpecificOrderWithHashing(Map<Integer, List<Node>> map, int level,
+        Node<Integer> node)
+    {
+        Queue<Node<Integer>> q = new LinkedList<>();
         q.add(node);
         int i, size;
 
         Node temp = null;
 
-        while(!q.isEmpty()){
-            i=0;
-            size=q.size();
-            while(i++<size){
+        while (!q.isEmpty())
+        {
+            i = 0;
+            size = q.size();
+            while (i++ < size)
+            {
                 temp = q.poll();
-                map.computeIfAbsent(level, k->new ArrayList<>()).add(temp);
-                if(null!=temp.left){
+                map.computeIfAbsent(level, k -> new ArrayList<>()).add(temp);
+                if (null != temp.left)
+                {
                     q.add(temp.left);
                 }
-                if(null!=temp.right){
+                if (null != temp.right)
+                {
                     q.add(temp.right);
                 }
 

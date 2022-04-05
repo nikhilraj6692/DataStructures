@@ -1,49 +1,71 @@
 package preparation.tree;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.TreeMap;
 import preparation.util.Node;
 import preparation.util.TreeBuilder;
 
-import java.util.*;
+public class Test39ReverseOrderTraversal
+{
 
-public class Test39ReverseOrderTraversal {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Node<Integer> node = TreeBuilder.buildTree3();
         traverseReverse(node);
         System.out.println();
         Map<Integer, List<Node>> map = new TreeMap<>(Comparator.reverseOrder());
         traverseReverseWithHashing(map, 0, node);
-        map.values().stream().flatMap(val-> val.stream()).forEach(x->System.out.print(x.data + " "));
+        map.values().stream().flatMap(val -> val.stream())
+            .forEach(x -> System.out.print(x.data + " "));
         System.out.println();
         map = new TreeMap<>(Comparator.reverseOrder());
         traverseReverseWithRecursionAndHashing(map, 0, node);
-        map.values().stream().flatMap(val-> val.stream()).forEach(x->System.out.print(x.data + " "));
+        map.values().stream().flatMap(val -> val.stream())
+            .forEach(x -> System.out.print(x.data + " "));
     }
 
-    private static void traverseReverseWithRecursionAndHashing(Map<Integer, List<Node>> map, int level, Node<Integer> node) {
-        if(node==null)
+    private static void traverseReverseWithRecursionAndHashing(Map<Integer, List<Node>> map,
+        int level, Node<Integer> node)
+    {
+        if (node == null)
+        {
             return;
-        map.computeIfAbsent(level, k->new ArrayList<>()).add(node);
-        traverseReverseWithRecursionAndHashing(map, level+1, node.left);
-        traverseReverseWithRecursionAndHashing(map, level+1, node.right);
+        }
+        map.computeIfAbsent(level, k -> new ArrayList<>()).add(node);
+        traverseReverseWithRecursionAndHashing(map, level + 1, node.left);
+        traverseReverseWithRecursionAndHashing(map, level + 1, node.right);
     }
 
-    private static void traverseReverseWithHashing(Map<Integer, List<Node>> map, int level, Node<Integer> node) {
-        Queue<Node<Integer>> q= new LinkedList<>();
+    private static void traverseReverseWithHashing(Map<Integer, List<Node>> map, int level,
+        Node<Integer> node)
+    {
+        Queue<Node<Integer>> q = new LinkedList<>();
         q.add(node);
         int i, size;
 
         Node temp = null;
 
-        while(!q.isEmpty()){
-            i=0;
-            size=q.size();
-            while(i++<size){
+        while (!q.isEmpty())
+        {
+            i = 0;
+            size = q.size();
+            while (i++ < size)
+            {
                 temp = q.poll();
-                map.computeIfAbsent(level, k->new ArrayList<>()).add(temp);
-                if(null!=temp.left){
+                map.computeIfAbsent(level, k -> new ArrayList<>()).add(temp);
+                if (null != temp.left)
+                {
                     q.add(temp.left);
                 }
-                if(null!=temp.right){
+                if (null != temp.right)
+                {
                     q.add(temp.right);
                 }
 
@@ -54,31 +76,37 @@ public class Test39ReverseOrderTraversal {
         }
     }
 
-    private static void traverseReverse(Node<Integer> node) {
+    private static void traverseReverse(Node<Integer> node)
+    {
         Deque<Node<Integer>> dq = new ArrayDeque<>();
-        Queue<Node<Integer>> q= new LinkedList<>();
+        Queue<Node<Integer>> q = new LinkedList<>();
         q.add(node);
         int i, size;
 
         Node temp = null;
-        while(!q.isEmpty()){
+        while (!q.isEmpty())
+        {
             size = q.size();
-            i=0;
-            while(i++<size){
+            i = 0;
+            while (i++ < size)
+            {
                 temp = q.poll();
                 dq.addLast(temp);
 
-                if(null!=temp.right){
+                if (null != temp.right)
+                {
                     q.add(temp.right);
                 }
-                if(null!=temp.left){
+                if (null != temp.left)
+                {
                     q.add(temp.left);
                 }
 
             }
         }
 
-        while(!dq.isEmpty()){
+        while (!dq.isEmpty())
+        {
             System.out.print(dq.pollLast().data + " ");
         }
     }

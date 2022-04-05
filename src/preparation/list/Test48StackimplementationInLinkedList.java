@@ -1,7 +1,10 @@
 package preparation.list;
 
-public class Test48StackimplementationInLinkedList {
-    public static void main(String[] args) {
+public class Test48StackimplementationInLinkedList
+{
+
+    public static void main(String[] args)
+    {
         Stack stack = new Stack();
 
         stack.push(1);
@@ -14,26 +17,32 @@ public class Test48StackimplementationInLinkedList {
         stack.pop();
         stack.pop();
 
-        if (stack.isEmpty()) {
+        if (stack.isEmpty())
+        {
             System.out.print("The stack is empty");
-        }
-        else {
+        } else
+        {
             System.out.print("The stack is not empty");
         }
     }
 }
 
-class Stack{
+class Stack
+{
+
     Node top;
 
-    Stack(){
+    Stack()
+    {
         this.top = null;
     }
 
 
-    public void push(int data) {
+    public void push(int data)
+    {
         Node node = new Node();
-        if(node == null){
+        if (node == null)
+        {
             System.out.println("Stack Overflow");
             System.exit(1);
         }
@@ -41,16 +50,20 @@ class Stack{
         System.out.println("Inserting " + data);
         node.data = data;
 
-        if(top == null){
+        if (top == null)
+        {
             top = node;
-        }else{
+        } else
+        {
             node.next = top;
             top = node;
         }
     }
 
-    public int pop() {
-        if(null == top){
+    public int pop()
+    {
+        if (null == top)
+        {
             System.out.println("Stack underflow");
             System.exit(1);
         }
@@ -63,16 +76,19 @@ class Stack{
         return (int) temp.data;
     }
 
-    public int peek() {
-        if(null == top){
+    public int peek()
+    {
+        if (null == top)
+        {
             System.out.print("Stack underflow");
             System.exit(1);
         }
         return (int) top.data;
     }
 
-    public boolean isEmpty() {
-        return top==null;
+    public boolean isEmpty()
+    {
+        return top == null;
     }
 }
 

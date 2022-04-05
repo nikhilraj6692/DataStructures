@@ -1,14 +1,14 @@
 package preparation.dynamicprogramming;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Test01FindAllArrangementsOfArrayThatSumUpToAGivenNumber {
+public class Test01FindAllArrangementsOfArrayThatSumUpToAGivenNumber
+{
+
     public static void main(String[] args)
     {
-        int[] arr = new int[] {1, 2, 3};
+        int[] arr = new int[]{1, 2, 3};
         int n = arr.length;
         int targetSum = 4;
         int sumSoFar = 0;
@@ -23,43 +23,53 @@ public class Test01FindAllArrangementsOfArrayThatSumUpToAGivenNumber {
         System.out.println();
         int sizeSoFar = 0;
         list = new ArrayList<>();
-        findAllCombinations(arr,0, list);
+        findAllCombinations(arr, 0, list);
     }
 
     /*
     classic example of backtracking...always pass index and remove after call is done
      */
-    private static void findAllCombinations(int[] arr, int n, int targetSum, int sumSoFar, List<Integer> result) {
-        if(sumSoFar == targetSum){
-            result.forEach(elem-> System.out.print(elem + " "));
+    private static void findAllCombinations(int[] arr, int n, int targetSum, int sumSoFar,
+        List<Integer> result)
+    {
+        if (sumSoFar == targetSum)
+        {
+            result.forEach(elem -> System.out.print(elem + " "));
             System.out.println();
             return;
-        }else if(sumSoFar > targetSum){
+        } else if (sumSoFar > targetSum)
+        {
             return;
         }
 
-        for (int i=0; i<n && (arr[i]+sumSoFar <= targetSum); i++){
+        for (int i = 0; i < n && (arr[i] + sumSoFar <= targetSum); i++)
+        {
             result.add(arr[i]);
-            sumSoFar+= arr[i];
+            sumSoFar += arr[i];
 
-            findAllCombinations(arr, n, targetSum,  sumSoFar, result);
+            findAllCombinations(arr, n, targetSum, sumSoFar, result);
 
-            result.remove(result.size()-1);
-            sumSoFar-=arr[i];
+            result.remove(result.size() - 1);
+            sumSoFar -= arr[i];
         }
     }
 
-    private static void findAllCombinations(int num, int targetSum, int sumSoFar, List<Integer> result) {
-        if(sumSoFar == targetSum){
+    private static void findAllCombinations(int num, int targetSum, int sumSoFar,
+        List<Integer> result)
+    {
+        if (sumSoFar == targetSum)
+        {
             System.out.print(result.toString());
             return;
-        }
-        else if(sumSoFar > targetSum){
+        } else if (sumSoFar > targetSum)
+        {
             return;
         }
 
-        for(int i=num;;i=i+2){
-            if(sumSoFar+i<=targetSum) {
+        for (int i = num; ; i = i + 2)
+        {
+            if (sumSoFar + i <= targetSum)
+            {
                 result.add(i);
                 sumSoFar = sumSoFar + i;
 
@@ -67,25 +77,28 @@ public class Test01FindAllArrangementsOfArrayThatSumUpToAGivenNumber {
 
                 result.remove(result.size() - 1);
                 sumSoFar = sumSoFar - i;
-            }else{
+            } else
+            {
                 return;
             }
         }
 
     }
 
-    private static void findAllCombinations(int[] arr, int index, List<Integer> result) {
-        if(index==arr.length){
+    private static void findAllCombinations(int[] arr, int index, List<Integer> result)
+    {
+        if (index == arr.length)
+        {
             System.out.print(result.toString());
             return;
         }
 
         //do not pick element
-        findAllCombinations(arr, index+1, result);
+        findAllCombinations(arr, index + 1, result);
 
         //pick element
         result.add(arr[index]);
-        findAllCombinations(arr, index+1, result);
-        result.remove(result.size()-1);
+        findAllCombinations(arr, index + 1, result);
+        result.remove(result.size() - 1);
     }
 }

@@ -8,8 +8,10 @@ import java.util.Set;
 /*
 Problem Description
 
-Given a matrix, A of size M x N of 0s and 1s. If an element is 0, set its entire row and column to 0.
-Note: This will be evaluated on the extra memory used. Try to minimize the space and time complexity.
+Given a matrix, A of size M x N of 0s and 1s. If an element is 0, set its entire row and column
+to 0.
+Note: This will be evaluated on the extra memory used. Try to minimize the space and time
+complexity.
 
 Input Format:
 
@@ -55,7 +57,8 @@ public class Test13Set1To0InMatrix
     {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
         /*
-            Solution: we have to make all colIndices to 0 and all rowIndices to 0, meaning that if we maintain a set of both and
+            Solution: we have to make all colIndices to 0 and all rowIndices to 0, meaning that
+            if we maintain a set of both and
             then fill arraylist, then it would work fine
          */
         list.add(new ArrayList<Integer>(Arrays.asList(1, 0, 1)));
@@ -69,18 +72,24 @@ public class Test13Set1To0InMatrix
         Set<Integer> rowIndices = new HashSet<>();
         Set<Integer> colIndices = new HashSet<>();
 
-        for(int i=0;i<a.size();i++){
-            for(int j=0;j<a.get(0).size();j++){
-                if(a.get(i).get(j) == 0){
+        for (int i = 0; i < a.size(); i++)
+        {
+            for (int j = 0; j < a.get(0).size(); j++)
+            {
+                if (a.get(i).get(j) == 0)
+                {
                     rowIndices.add(i);
                     colIndices.add(j);
                 }
             }
         }
 
-        for(int i=0;i<a.size();i++){
-            for(int j=0;j<a.get(0).size();j++){
-                if(rowIndices.contains(i) || colIndices.contains(j)){
+        for (int i = 0; i < a.size(); i++)
+        {
+            for (int j = 0; j < a.get(0).size(); j++)
+            {
+                if (rowIndices.contains(i) || colIndices.contains(j))
+                {
                     a.get(i).set(j, 0);
                 }
             }

@@ -2,6 +2,7 @@ package preparation.util;
 
 public class NodeInfo
 {
+
     public int key;
     public int level;
     public Node parent = null;
@@ -12,5 +13,5 @@ public class NodeInfo
         this.level = level;
         this.parent = parent;
     }
-    
+
 }

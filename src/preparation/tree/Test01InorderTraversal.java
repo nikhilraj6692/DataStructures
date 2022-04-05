@@ -1,12 +1,14 @@
 package preparation.tree;
 
+import java.util.Stack;
 import preparation.util.Node;
 import preparation.util.TreeBuilder;
 
-import java.util.Stack;
+public class Test01InorderTraversal
+{
 
-public class Test01InorderTraversal {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Node<Integer> root = TreeBuilder.buildTree();
 
         inOrderTraversal(root);
@@ -16,29 +18,34 @@ public class Test01InorderTraversal {
         inOrderTraversalWithoutRecursion(root);
     }
 
-    private static void inOrderTraversalWithoutRecursion(Node root) {
+    private static void inOrderTraversalWithoutRecursion(Node root)
+    {
         Node temp = root;
 
         Stack<Node> st = new Stack();
 
-        while(null!=temp || st.size()>0){
-           while(temp!=null){
-               st.push(temp);
-               temp = temp.left;
-           }
+        while (null != temp || st.size() > 0)
+        {
+            while (temp != null)
+            {
+                st.push(temp);
+                temp = temp.left;
+            }
 
-           temp = st.pop();
-           System.out.print(temp.data + " ");
+            temp = st.pop();
+            System.out.print(temp.data + " ");
 
-           temp = temp.right;
+            temp = temp.right;
 
         }
     }
 
-    public static void inOrderTraversal(Node root) {
+    public static void inOrderTraversal(Node root)
+    {
         Node temp = root;
 
-        if(temp == null){
+        if (temp == null)
+        {
             return;
         }
 

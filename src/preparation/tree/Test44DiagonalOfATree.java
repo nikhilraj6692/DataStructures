@@ -1,45 +1,57 @@
 package preparation.tree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.TreeMap;
 import preparation.util.Node;
 import preparation.util.TreeBuilder;
 
-import java.util.*;
+public class Test44DiagonalOfATree
+{
 
-public class Test44DiagonalOfATree {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Node<Integer> root = TreeBuilder.buildTree();
         Map<Integer, List<Node<Integer>>> map = new TreeMap<>();
         findDiagonal(root, 0, map);
-        map.entrySet().forEach(x->{
-            x.getValue().stream().forEach(y->System.out.print(y.data+ " "));
+        map.entrySet().forEach(x -> {
+            x.getValue().stream().forEach(y -> System.out.print(y.data + " "));
             System.out.println();
         });
         printDiagonalRecursively(root);
     }
 
-    private static void printDiagonalRecursively(Node<Integer> root) {
+    private static void printDiagonalRecursively(Node<Integer> root)
+    {
         Queue<Node<Integer>> q = new LinkedList<>();
         Node<Integer> temp = null;
         Node<Integer> lastNode = new Node(-1);
 
-        while(root!=null){
+        while (root != null)
+        {
             q.add(root);
             root = root.right;
         }
         q.add(lastNode);
 
-
-        while(q.size()!=1){
+        while (q.size() != 1)
+        {
             temp = q.poll();
-            if(temp!=lastNode){
+            if (temp != lastNode)
+            {
                 System.out.print(temp.data + " ");
                 temp = temp.left;
 
-                while(temp!=null){
+                while (temp != null)
+                {
                     q.add(temp);
                     temp = temp.right;
                 }
-            }else{
+            } else
+            {
                 q.add(lastNode);
                 System.out.println();
             }
@@ -49,11 +61,15 @@ public class Test44DiagonalOfATree {
     }
 
 
-    private static void findDiagonal(Node<Integer> root, int diagonal, Map<Integer, List<Node<Integer>>> map) {
-        if(root == null)
+    private static void findDiagonal(Node<Integer> root, int diagonal,
+        Map<Integer, List<Node<Integer>>> map)
+    {
+        if (root == null)
+        {
             return;
+        }
 
-        map.computeIfAbsent(diagonal, k->new ArrayList<>()).add(new Node<>(root.data));
+        map.computeIfAbsent(diagonal, k -> new ArrayList<>()).add(new Node<>(root.data));
         findDiagonal(root.left, diagonal + 1, map);
         findDiagonal(root.right, diagonal, map);
     }

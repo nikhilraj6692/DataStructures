@@ -1,7 +1,10 @@
 package preparation.list;
 
-public class Test47ImplementationOfQueue {
-    public static void main(String[] args) {
+public class Test47ImplementationOfQueue
+{
+
+    public static void main(String[] args)
+    {
         CustomQueue q = new CustomQueue();
         q.enqueue(1);
         q.enqueue(2);
@@ -15,51 +18,62 @@ public class Test47ImplementationOfQueue {
         q.dequeue();
         q.dequeue();
 
-        if (q.isEmpty()) {
+        if (q.isEmpty())
+        {
             System.out.print("The queue is empty");
-        }
-        else {
+        } else
+        {
             System.out.print("The queue is not empty");
         }
     }
 }
 
-class CustomQueue{
+class CustomQueue
+{
 
     Node front = null, rear = null;
 
-    public void enqueue(int data) {
+    public void enqueue(int data)
+    {
         Node node = new Node(data);
 
         System.out.printf("Inserting %d\n", data);
 
-        if(front == null){
+        if (front == null)
+        {
             front = node;
             rear = node;
-        }else{
+        } else
+        {
             rear.next = node;
             rear = node;
         }
     }
 
-    public int dequeue() {
-        if(front == null){
+    public int dequeue()
+    {
+        if (front == null)
+        {
             System.out.println("Queue underflow");
             System.exit(0);
         }
         Node node = front;
         front = front.next;
 
-        if(front == null)
+        if (front == null)
+        {
             rear = null;
+        }
 
         System.out.printf("Removing %d\n", node.data);
         return (int) node.data;
 
     }
 
-    public int peek() {
-        if(front == null){
+    public int peek()
+    {
+        if (front == null)
+        {
             System.out.println("Queue is empty");
             System.exit(1);
         }
@@ -67,8 +81,9 @@ class CustomQueue{
         return (int) front.data;
     }
 
-    public boolean isEmpty() {
-        return front==null && rear == null;
+    public boolean isEmpty()
+    {
+        return front == null && rear == null;
     }
 }
 

@@ -1,13 +1,18 @@
 package preparation.graph;
 
-import preparation.util.Edge;
-import preparation.util.Node;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 import preparation.util.VNode;
 
-import java.util.*;
+public class Test28FindMinimumNumberOfStepsForKnightToMoveFromSourceToDestination
+{
 
-public class Test28FindMinimumNumberOfStepsForKnightToMoveFromSourceToDestination {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         int N = 8;
 
         // source coordinates
@@ -17,12 +22,14 @@ public class Test28FindMinimumNumberOfStepsForKnightToMoveFromSourceToDestinatio
         VNode dest = new VNode(7, 0);
 
         System.out.println("The minimum number of steps required is " +
-                findShortestDistance(src, dest, N));
+            findShortestDistance(src, dest, N));
     }
 
-    private static int findShortestDistance(VNode src, VNode dest, int n) {
+    private static int findShortestDistance(VNode src, VNode dest, int n)
+    {
         /*
-        The possible combinations for a knight to move from (x,y) to a valid position in one step are:
+        The possible combinations for a knight to move from (x,y) to a valid position in one step
+         are:
         (x + 2, y – 1)
         (x + 2, y + 1)
         (x – 2, y + 1)
@@ -34,8 +41,8 @@ public class Test28FindMinimumNumberOfStepsForKnightToMoveFromSourceToDestinatio
 
         So, make row and column array corresponding to each index
          */
-        int[] row = new int[] {2, 2, -2, -2, 1, 1, -1, -1};
-        int[] column = new int[] {-1, 1, 1, -1, 2, -2, 2, -2};
+        int[] row = new int[]{2, 2, -2, -2, 1, 1, -1, -1};
+        int[] column = new int[]{-1, 1, 1, -1, 2, -2, 2, -2};
 
         //8*8
         Map<VNode, VNode> parentMap = new HashMap<>();
@@ -46,26 +53,31 @@ public class Test28FindMinimumNumberOfStepsForKnightToMoveFromSourceToDestinatio
         // set to check if the matrix cell is visited before or not
         Set<VNode> visited = new HashSet<>();
 
-        while(!q.isEmpty()){
+        while (!q.isEmpty())
+        {
             VNode sNode = q.poll();
             int sX = sNode.source;
             int sY = sNode.destination;
             int d = sNode.distance;
 
-            if(sX == dest.source && sY == dest.destination) {
+            if (sX == dest.source && sY == dest.destination)
+            {
                 //print parent
                 findPath(parentMap, sNode);
                 return d;
             }
 
-            if(!visited.contains(sNode)) {
+            if (!visited.contains(sNode))
+            {
                 visited.add(sNode);
-                for (int i = 0; i < row.length; i++) {
+                for (int i = 0; i < row.length; i++)
+                {
                     int dX = sX + row[i];
                     int dY = sY + column[i];
-                    VNode dVNode = new VNode(dX, dY, d+1);
+                    VNode dVNode = new VNode(dX, dY, d + 1);
 
-                    if (dX >= 0 && dX < n && dY >= 0 && dY < n) {
+                    if (dX >= 0 && dX < n && dY >= 0 && dY < n)
+                    {
                         q.add(dVNode);
                         parentMap.put(dVNode, sNode);
                     }
@@ -76,8 +88,10 @@ public class Test28FindMinimumNumberOfStepsForKnightToMoveFromSourceToDestinatio
         return -1;
     }
 
-    private static void findPath(Map<VNode, VNode> parentMap, VNode sNode) {
-        if(parentMap.get(sNode) == null) {
+    private static void findPath(Map<VNode, VNode> parentMap, VNode sNode)
+    {
+        if (parentMap.get(sNode) == null)
+        {
             System.out.println(sNode.source + " " + sNode.destination + " " + sNode.distance);
             return;
         }

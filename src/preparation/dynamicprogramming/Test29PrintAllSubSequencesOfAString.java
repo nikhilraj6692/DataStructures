@@ -1,9 +1,14 @@
 package preparation.dynamicprogramming;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-public class Test29PrintAllSubSequencesOfAString {
-    public static void main(String[] args) {
+public class Test29PrintAllSubSequencesOfAString
+{
+
+    public static void main(String[] args)
+    {
         String s = "job";
         printAllSequences(s, "");
 
@@ -19,34 +24,46 @@ public class Test29PrintAllSubSequencesOfAString {
     }
 
     /*
-    in backtracking remember that we have remove last added variable from the output so that the recursion will take place
+    in backtracking remember that we have remove last added variable from the output so that the
+    recursion will take place
      */
-    private static void printSubSeqByBakctracking(String input, Set<String> set, String output, int index) {
-        if(null!=output)
+    private static void printSubSeqByBakctracking(String input, Set<String> set, String output,
+        int index)
+    {
+        if (null != output)
+        {
             set.add(output);
+        }
 
-        for(int i=index; i<input.length();i++){
-            output+= input.charAt(i);
-            printSubSeqByBakctracking(input, set, output, i+1);
-            output = output.substring(0, output.length()-1);
+        for (int i = index; i < input.length(); i++)
+        {
+            output += input.charAt(i);
+            printSubSeqByBakctracking(input, set, output, i + 1);
+            output = output.substring(0, output.length() - 1);
         }
     }
 
-    private static void printAllSequencesPermutations(String input, String output, Set<String> set) {
-       if(input.length() == 0) {
-           set.add(output);
-           return;
-       }
+    private static void printAllSequencesPermutations(String input, String output, Set<String> set)
+    {
+        if (input.length() == 0)
+        {
+            set.add(output);
+            return;
+        }
 
-       for(int i=0;i<input.length();i++){
-           char ch = input.charAt(i);
-           printAllSequencesPermutations(input.substring(0,i) + input.substring(i+1), output + ch, set);
-       }
+        for (int i = 0; i < input.length(); i++)
+        {
+            char ch = input.charAt(i);
+            printAllSequencesPermutations(input.substring(0, i) + input.substring(i + 1),
+                output + ch, set);
+        }
 
     }
 
-    private static void printAllSequences(String input, String output) {
-        if(input.length() == 0) {
+    private static void printAllSequences(String input, String output)
+    {
+        if (input.length() == 0)
+        {
             System.out.println(output);
             return;
         }

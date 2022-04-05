@@ -1,9 +1,13 @@
 package preparation.list;
 
-public class Test53CustomHashMapImplementation {
-    public static void main(String[] args) {
+public class Test53CustomHashMapImplementation
+{
+
+    public static void main(String[] args)
+    {
         /*
-        As we know that hashmap is an array of linked list, where linked list is represented by Entry, so we are going
+        As we know that hashmap is an array of linked list, where linked list is represented by
+        Entry, so we are going
         to create array to Entry<K,v> in short
          */
         CustomHashMap<Integer, String> map = new CustomHashMap<Integer, String>();
@@ -28,68 +32,86 @@ public class Test53CustomHashMapImplementation {
     }
 }
 
-class CustomHashMap<K,V>{
-    private Entry<K,V>[] buckets;
+class CustomHashMap<K, V>
+{
+
+    private Entry<K, V>[] buckets;
     private int capacity;
     private int size = 0;
 
-    CustomHashMap(int capacity){
+    CustomHashMap(int capacity)
+    {
         this.capacity = capacity;
         this.buckets = new Entry[capacity];
     }
 
-    CustomHashMap(){
+    CustomHashMap()
+    {
         this.capacity = 16;
         this.buckets = new Entry[capacity];
     }
 
-    public void put(K key, V val) {
+    public void put(K key, V val)
+    {
         int index = -1;
-        if(key==null){
+        if (key == null)
+        {
             index = 0;
-        }else {
+        } else
+        {
             index = key.hashCode() % (capacity);
         }
 
-        Entry<K,V> entry = new Entry<>(key, val);
-        Entry<K,V> previousEntry = null;
+        Entry<K, V> entry = new Entry<>(key, val);
+        Entry<K, V> previousEntry = null;
 
         //no element in bucket till now
-        if(buckets[index]==null){
+        if (buckets[index] == null)
+        {
             buckets[index] = entry;
             size++;
-        }else{
-            Entry<K,V> currentEntry = buckets[index];
-            while(null!=currentEntry) {
-                if(currentEntry.key.equals(key)){
+        } else
+        {
+            Entry<K, V> currentEntry = buckets[index];
+            while (null != currentEntry)
+            {
+                if (currentEntry.key.equals(key))
+                {
                     currentEntry.val = val;
                     return;
-                }else{
+                } else
+                {
                     previousEntry = currentEntry;
-                    currentEntry=currentEntry.next;
+                    currentEntry = currentEntry.next;
                 }
             }
-            previousEntry.next=entry;
+            previousEntry.next = entry;
             size++;
         }
     }
 
-    public void remove(K key) {
-        int index = key.hashCode()%(capacity);
-        Entry<K,V> currentNode = buckets[index];
-        Entry<K,V> previousNode = null;
+    public void remove(K key)
+    {
+        int index = key.hashCode() % (capacity);
+        Entry<K, V> currentNode = buckets[index];
+        Entry<K, V> previousNode = null;
 
-        while(null!=currentNode){
-            if(currentNode.key.equals(key)){
+        while (null != currentNode)
+        {
+            if (currentNode.key.equals(key))
+            {
                 size--;
-                if(previousNode == null){
+                if (previousNode == null)
+                {
                     buckets[index] = currentNode.next;
                     return;
-                }else{
+                } else
+                {
                     previousNode.next = currentNode.next;
                     return;
                 }
-            }else{
+            } else
+            {
                 previousNode = currentNode;
                 currentNode = currentNode.next;
             }
@@ -97,12 +119,16 @@ class CustomHashMap<K,V>{
 
     }
 
-    public void display() {
-        for(int i=0;i<buckets.length;i++){
-            if(null!=buckets[i]){
-                Entry<K,V> current = buckets[i];
-                while(null!=current){
-                    System.out.print("("+current.key+","+current.val+"), ");
+    public void display()
+    {
+        for (int i = 0; i < buckets.length; i++)
+        {
+            if (null != buckets[i])
+            {
+                Entry<K, V> current = buckets[i];
+                while (null != current)
+                {
+                    System.out.print("(" + current.key + "," + current.val + "), ");
                     current = current.next;
                 }
             }
@@ -112,12 +138,15 @@ class CustomHashMap<K,V>{
     }
 }
 
-class Entry<K,V>{
-    Entry<K,V> next;
+class Entry<K, V>
+{
+
+    Entry<K, V> next;
     K key;
     V val;
 
-    Entry(K key, V val){
+    Entry(K key, V val)
+    {
         this.next = null;
         this.key = key;
         this.val = val;

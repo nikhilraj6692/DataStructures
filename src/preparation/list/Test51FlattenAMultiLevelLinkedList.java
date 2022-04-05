@@ -1,7 +1,10 @@
 package preparation.list;
 
-public class Test51FlattenAMultiLevelLinkedList {
-    public static void main(String[] args) {
+public class Test51FlattenAMultiLevelLinkedList
+{
+
+    public static void main(String[] args)
+    {
         Node one = new Node(1);
         Node two = new Node(2);
         Node three = new Node(3);
@@ -47,18 +50,21 @@ public class Test51FlattenAMultiLevelLinkedList {
         printFlattenedList(head);
     }
 
-    private static Node flattenList(Node head) {
+    private static Node flattenList(Node head)
+    {
         Node curr = head;
 
-        if(null == curr)
+        if (null == curr)
+        {
             return null;
+        }
 
         Node next = curr.next;
         curr.next = flattenList(curr.down);
 
-
         //next is not null...iterate till end and make it curr
-        while (curr.next != null) {
+        while (curr.next != null)
+        {
             curr = curr.next;
         }
 
@@ -80,7 +86,8 @@ public class Test51FlattenAMultiLevelLinkedList {
     // Utility function to print a list with `down` and `next` pointers
     public static void printOriginalList(Node head)
     {
-        if (head == null) {
+        if (head == null)
+        {
             return;
         }
 

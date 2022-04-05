@@ -1,12 +1,14 @@
 package preparation.tree;
 
+import java.util.Stack;
 import preparation.util.Node;
 import preparation.util.TreeBuilder;
 
-import java.util.Stack;
+public class Test02PreorderTraversal
+{
 
-public class Test02PreorderTraversal {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Node<Integer> root = TreeBuilder.buildTree();
 
         preorderTraversal(root);
@@ -16,21 +18,25 @@ public class Test02PreorderTraversal {
         preorderTraversalWithoutRecursion(root);
     }
 
-    private static void preorderTraversalWithoutRecursion(Node<Integer> root) {
+    private static void preorderTraversalWithoutRecursion(Node<Integer> root)
+    {
         Node temp = root;
 
         Stack<Node> stack = new Stack();
 
         stack.push(temp);
-        while(!stack.isEmpty()){
+        while (!stack.isEmpty())
+        {
             temp = stack.pop();
             System.out.print(temp.data + " ");
 
-            if(temp.right!=null){
+            if (temp.right != null)
+            {
                 stack.push(temp.right);
             }
 
-            if(temp.left!=null){
+            if (temp.left != null)
+            {
                 stack.push(temp.left);
             }
         }
@@ -48,10 +54,12 @@ public class Test02PreorderTraversal {
                  /   \
                 7     8
         */
-    public static void preorderTraversal(Node<Integer> root) {
+    public static void preorderTraversal(Node<Integer> root)
+    {
         Node temp = root;
 
-        if(temp == null){
+        if (temp == null)
+        {
             return;
         }
 

@@ -3,8 +3,11 @@ package preparation.tree;
 import preparation.util.Node;
 import preparation.util.TreeBuilder;
 
-public class Test23CountSubTreesWithSameValue {
-    public static void main(String[] args) {
+public class Test23CountSubTreesWithSameValue
+{
+
+    public static void main(String[] args)
+    {
         Node<Integer> node = TreeBuilder.buildTree7();
         System.out.println(countUnivalTrees(node));
     }
@@ -18,16 +21,20 @@ public class Test23CountSubTreesWithSameValue {
             /     /   \     \
            4     5     5     7
        */
-    private static int countUnivalTrees(Node root) {
-        if (root == null) {
+    private static int countUnivalTrees(Node root)
+    {
+        if (root == null)
+        {
             return 0;
         }
         int count = countUnivalTrees(root.left) + countUnivalTrees(root.right);
-        if (root.left != null && root.data != root.left.data) {
+        if (root.left != null && root.data != root.left.data)
+        {
             return count;
         }
 
-        if (root.right != null && root.data != root.right.data) {
+        if (root.right != null && root.data != root.right.data)
+        {
             return count;
         }
 

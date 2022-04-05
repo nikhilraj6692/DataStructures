@@ -1,11 +1,13 @@
 package preparation.list;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-public class Test28RemoveDuplicates {
-    public static void main(String[] args) {
+public class Test28RemoveDuplicates
+{
+
+    public static void main(String[] args)
+    {
         int keys[] = {5, 3, 4, 2, 5, 4, 1, 3};
         Node<Integer> head = ListBuilder.createLinkedList(keys);
 
@@ -16,21 +18,27 @@ public class Test28RemoveDuplicates {
         Test01ListIntro.printList(removeDuplicatesEasyApproach(head));
     }
 
-    private static Node<Integer> removeDuplicatesEasyApproach(Node<Integer> head) {
-        if(null==head)
+    private static Node<Integer> removeDuplicatesEasyApproach(Node<Integer> head)
+    {
+        if (null == head)
+        {
             return null;
+        }
 
         Node<Integer> curr = head;
         Node<Integer> prev = null;
         Set<Integer> set = new HashSet<>();
         //[1,2,3]
         //1,2,2,2,3
-        while(null!=curr){
-            if(!set.contains(curr.data)){
+        while (null != curr)
+        {
+            if (!set.contains(curr.data))
+            {
                 set.add(curr.data);
                 prev = curr;
 
-            }else{
+            } else
+            {
                 prev.next = curr.next;
             }
             curr = curr.next;
@@ -39,13 +47,17 @@ public class Test28RemoveDuplicates {
         return head;
     }
 
-    private static Node<Integer> removeDuplicates(Node<Integer> head) {
+    private static Node<Integer> removeDuplicates(Node<Integer> head)
+    {
         Set<Integer> set = new HashSet<>();
         Node<Integer> temp = head;
         Node<Integer> prevNode = null;
-        while(null!=temp){
-            if(!set.contains(temp.data)){
-                if(null!=prevNode) {
+        while (null != temp)
+        {
+            if (!set.contains(temp.data))
+            {
+                if (null != prevNode)
+                {
                     prevNode.next = temp;
                 }
                 prevNode = temp;

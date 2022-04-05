@@ -1,8 +1,11 @@
 package preparation.list;
 
-public class Test37SwapAdjacentPointers {
-    public static void main(String[] args) {
-        int[] keys = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
+public class Test37SwapAdjacentPointers
+{
+
+    public static void main(String[] args)
+    {
+        int[] keys = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         Node<Integer> head = ListBuilder.createLinkedList(keys);
 
         head = swapAdjacentNodes(head);
@@ -10,31 +13,37 @@ public class Test37SwapAdjacentPointers {
     }
 
     //2->1->4->3->6->5->7
-    private static Node<Integer> swapAdjacentNodes(Node<Integer> head) {
+    private static Node<Integer> swapAdjacentNodes(Node<Integer> head)
+    {
         Node<Integer> temp = null;
         Node<Integer> prev = null;
         Node<Integer> curr = head;
 
-        while(null!=curr && null!=curr.next){
+        while (null != curr && null != curr.next)
+        {
             Node next = curr.next.next;
             Node swapped = swapNode(curr, curr.next);
 
-            if(prev == null){
+            if (prev == null)
+            {
                 head = swapped;
-            }else{
-               prev.next = swapped;
+            } else
+            {
+                prev.next = swapped;
             }
 
             prev = curr;
             curr = next;
         }
-        if(null!=curr){
+        if (null != curr)
+        {
             prev.next = curr;
         }
         return head;
     }
 
-    private static Node<Integer> swapNode(Node<Integer> first, Node<Integer> second) {
+    private static Node<Integer> swapNode(Node<Integer> first, Node<Integer> second)
+    {
         first.next = second;
         second.next = first;
 

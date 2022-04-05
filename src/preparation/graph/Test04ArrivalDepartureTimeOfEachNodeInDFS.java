@@ -1,18 +1,20 @@
 package preparation.graph;
 
+import java.util.Arrays;
+import java.util.List;
 import preparation.util.Edge;
 import preparation.util.Graph;
 
-import java.util.Arrays;
-import java.util.List;
+public class Test04ArrivalDepartureTimeOfEachNodeInDFS
+{
 
-public class Test04ArrivalDepartureTimeOfEachNodeInDFS {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         // List of graph edges as per the above diagram
         List<Edge> edges = Arrays.asList(
-                new Edge(0, 1), new Edge(0, 2), new Edge(2, 3),
-                new Edge(2, 4), new Edge(3, 1), new Edge(3, 5),
-                new Edge(4, 5), new Edge(6, 7)
+            new Edge(0, 1), new Edge(0, 2), new Edge(2, 3),
+            new Edge(2, 4), new Edge(3, 1), new Edge(3, 5),
+            new Edge(4, 5), new Edge(6, 7)
         );
 
         // total number of nodes in the graph
@@ -32,7 +34,8 @@ public class Test04ArrivalDepartureTimeOfEachNodeInDFS {
         // cover all unconnected components of a graph
         for (int i = 0; i < N; i++)
         {
-            if (!discovered[i]) {
+            if (!discovered[i])
+            {
                 time = performDFS(graph, i, discovered, arrival, departure, time);
             }
         }
@@ -42,17 +45,22 @@ public class Test04ArrivalDepartureTimeOfEachNodeInDFS {
         for (int i = 0; i < N; i++)
         {
             System.out.println("Vertex " + i + " (" + arrival[i]
-                    + ", " + departure[i] + ")");
+                + ", " + departure[i] + ")");
         }
     }
 
-    private static int performDFS(Graph graph, int src, boolean[] discovered, int[] arrival, int[] departure, int time) {
+    private static int performDFS(Graph graph, int src, boolean[] discovered, int[] arrival,
+        int[] departure, int time)
+    {
         arrival[src] = ++time;
         discovered[src] = true;
 
-        for(int dest : graph.adjList.get(src)){
-            if(!discovered[src])
+        for (int dest : graph.adjList.get(src))
+        {
+            if (!discovered[src])
+            {
                 time = performDFS(graph, dest, discovered, arrival, departure, time);
+            }
         }
 
         departure[src] = ++time;

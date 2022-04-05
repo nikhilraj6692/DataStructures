@@ -1,7 +1,6 @@
 package preparation;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -10,7 +9,10 @@ import java.util.PriorityQueue;
 /*
 Problem Description
 
-A hotel manager has to process N advance bookings of rooms for the next season. His hotel has C rooms. Bookings contain an arrival date and a departure date. He wants to find out whether there are enough rooms in the hotel to satisfy the demand. Write a program that solves this problem in time O(N log N) .
+A hotel manager has to process N advance bookings of rooms for the next season. His hotel has C
+rooms. Bookings contain an arrival date and a departure date. He wants to find out whether there
+are enough rooms in the hotel to satisfy the demand. Write a program that solves this problem in
+time O(N log N) .
 
 
 
@@ -56,6 +58,7 @@ public class Test01CheckHotelRoomsCapacity
     {
         System.out.print(hotel(Arrays.asList(1, 3, 5), Arrays.asList(2, 6, 8), 1));
     }
+
     public static boolean hotel(List<Integer> arrive, List<Integer> depart, int K)
     {
         int count = 0;

@@ -1,7 +1,10 @@
 package preparation.list;
 
-public class Test43MergeSortedLinkedListWithoutChangingPointers {
-    public static void main(String[] args) {
+public class Test43MergeSortedLinkedListWithoutChangingPointers
+{
+
+    public static void main(String[] args)
+    {
         Node first = new Node(2);
         first.next = new Node(6);
         first.next.next = new Node(9);
@@ -31,14 +34,18 @@ public class Test43MergeSortedLinkedListWithoutChangingPointers {
         System.out.println();
     }
 
-    //swap elements if first.data is less than second.data. After swap it may be possible that the second list has become unordered,
+    //swap elements if first.data is less than second.data. After swap it may be possible that
+    // the second list has become unordered,
     //so order it and then again compare
-    private static Node mergeLists(Node<Integer> first, Node<Integer> second) {
+    private static Node mergeLists(Node<Integer> first, Node<Integer> second)
+    {
         Node<Integer> curr1 = first;
         Node<Integer> curr2 = second;
 
-        while(null!=curr1 && null!=curr2){
-            if(curr1.data > curr2.data){
+        while (null != curr1 && null != curr2)
+        {
+            if (curr1.data > curr2.data)
+            {
                 //swap data
                 swap(curr1, curr2);
             }
@@ -52,19 +59,26 @@ public class Test43MergeSortedLinkedListWithoutChangingPointers {
 
     //  6 8 10
     // 9
-    private static Node<Integer> rearrangeSecondList(Node<Integer> curr2, Node<Integer> nodeToBeAdded) {
-        if(curr2 == null)
+    private static Node<Integer> rearrangeSecondList(Node<Integer> curr2,
+        Node<Integer> nodeToBeAdded)
+    {
+        if (curr2 == null)
+        {
             return nodeToBeAdded;
+        }
 
-        if(nodeToBeAdded.data < curr2.data){
+        if (nodeToBeAdded.data < curr2.data)
+        {
             nodeToBeAdded.next = curr2;
             return nodeToBeAdded;
         }
 
         Node headNode = curr2;
         Node prevNode = null;
-        while(null!=curr2){
-            if(curr2.data >= nodeToBeAdded.data){
+        while (null != curr2)
+        {
+            if (curr2.data >= nodeToBeAdded.data)
+            {
                 prevNode.next = nodeToBeAdded;
                 nodeToBeAdded.next = curr2;
             }
@@ -75,7 +89,8 @@ public class Test43MergeSortedLinkedListWithoutChangingPointers {
         return headNode;
     }
 
-    private static void swap(Node<Integer> curr1, Node<Integer> curr2) {
+    private static void swap(Node<Integer> curr1, Node<Integer> curr2)
+    {
         int temp = curr1.data;
         curr1.data = curr2.data;
         curr2.data = temp;

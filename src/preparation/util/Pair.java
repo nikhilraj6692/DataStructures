@@ -2,6 +2,7 @@ package preparation.util;
 
 public class Pair<U, V>
 {
+
     public final U first;       // first field of a pair
     public final V second;      // second field of a pair
 
@@ -19,11 +20,13 @@ public class Pair<U, V>
         return new Pair<>(a, b);
     }
 
-    public U getFirst() {
+    public U getFirst()
+    {
         return first;
     }
 
-    public V getSecond() {
+    public V getSecond()
+    {
         return second;
     }
 }

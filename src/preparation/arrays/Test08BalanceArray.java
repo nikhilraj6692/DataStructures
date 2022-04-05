@@ -3,7 +3,8 @@ package preparation.arrays;
 /*
 Problem Description
 
-Given an integer array A of size N. You need to count the number of special elements in the given array.
+Given an integer array A of size N. You need to count the number of special elements in the given
+ array.
 
 A element is special if removal of that element make the array balanced.
 
@@ -60,8 +61,10 @@ Explanation 2:
  */
 public class Test08BalanceArray
 {
+
     /*
-    solution is to check at each index whether prefixEvenSum + suffixOddSum == prefixOddSum + suffixEvenSum at that index
+    solution is to check at each index whether prefixEvenSum + suffixOddSum == prefixOddSum +
+    suffixEvenSum at that index
      */
     public static void main(String[] args)
     {
@@ -75,28 +78,41 @@ public class Test08BalanceArray
         int prefixEvenSum = 0;
         int prefixOddSum = 0;
 
-        for(int i =0;i<arr.length;i++){
-            if(i%2==0)
-                suffixEvenSum+= arr[i];
-            else
-                suffixOddSum+= arr[i];
+        for (int i = 0; i < arr.length; i++)
+        {
+            if (i % 2 == 0)
+            {
+                suffixEvenSum += arr[i];
+            } else
+            {
+                suffixOddSum += arr[i];
+            }
         }
 
         int count = 0;
-        for(int i=0;i<arr.length;i++){
+        for (int i = 0; i < arr.length; i++)
+        {
             //remove elements at the index from suffix sum
-            if(i%2==0)
-                suffixEvenSum-= arr[i];
-            else
-                suffixOddSum-= arr[i];
+            if (i % 2 == 0)
+            {
+                suffixEvenSum -= arr[i];
+            } else
+            {
+                suffixOddSum -= arr[i];
+            }
 
-            if(prefixEvenSum + suffixOddSum == prefixOddSum + suffixEvenSum)
+            if (prefixEvenSum + suffixOddSum == prefixOddSum + suffixEvenSum)
+            {
                 count++;
+            }
 
-            if(i%2==0)
-                prefixEvenSum+= arr[i];
-            else
-                prefixOddSum+= arr[i];
+            if (i % 2 == 0)
+            {
+                prefixEvenSum += arr[i];
+            } else
+            {
+                prefixOddSum += arr[i];
+            }
         }
 
         return count;

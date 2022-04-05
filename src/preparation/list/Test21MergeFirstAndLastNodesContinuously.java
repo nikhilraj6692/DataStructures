@@ -1,17 +1,21 @@
 package preparation.list;
 
-import preparation.util.NodeWrapper;
+public class Test21MergeFirstAndLastNodesContinuously
+{
 
-public class Test21MergeFirstAndLastNodesContinuously {
-    public static void main(String[] args) {
-        int[] keys = { 1, 2, 3, 4, 5, 6 , 7};
+    public static void main(String[] args)
+    {
+        int[] keys = {1, 2, 3, 4, 5, 6, 7};
         Node<Integer> head = ListBuilder.createLinkedList(keys);
 
         //Test01ListIntro.printList(mergeFirstAndLastNodeContinously(head));
         /*
-        one way is to find the middle of linked list with slow and fast pointer where slow=head and fast=head.next. Now
-        split it into two linked list and reverse second one...now we have two linked lists...just merge it by test12.
-        second way is to create a deque and then add all elements. Form a linked list from deque with first and last
+        one way is to find the middle of linked list with slow and fast pointer where slow=head
+        and fast=head.next. Now
+        split it into two linked list and reverse second one...now we have two linked lists..
+        .just merge it by test12.
+        second way is to create a deque and then add all elements. Form a linked list from deque
+        with first and last
         element
          */
         //mergeFirstAndLastRecursively(head);

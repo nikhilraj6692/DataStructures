@@ -3,8 +3,11 @@ package preparation.list;
 /*
 basic list operations
  */
-public class Test01ListIntro {
-    public static void main(String[] args) {
+public class Test01ListIntro
+{
+
+    public static void main(String[] args)
+    {
         Node<Integer> head = ListBuilder.buildList1();
         //print list
         printList(head);
@@ -21,14 +24,18 @@ public class Test01ListIntro {
         printList(head);
     }
 
-    private static Node<Integer> addNodeAtTail(int data, Node<Integer> head) {
+    private static Node<Integer> addNodeAtTail(int data, Node<Integer> head)
+    {
         Node temp = head;
         Node<Integer> newData = new Node<>(data);
 
-        if(null == head){
+        if (null == head)
+        {
             head = newData;
-        }else{
-            while(temp.next!=null){
+        } else
+        {
+            while (temp.next != null)
+            {
                 temp = temp.next;
             }
             temp.next = newData;
@@ -37,7 +44,8 @@ public class Test01ListIntro {
         return head;
     }
 
-    private static Node<Integer> addNodeAtHead(int key, Node<Integer> node) {
+    private static Node<Integer> addNodeAtHead(int key, Node<Integer> node)
+    {
         Node<Integer> head = node;
         Node<Integer> newData = new Node<>(key);
 
@@ -47,20 +55,25 @@ public class Test01ListIntro {
         return head;
     }
 
-    public static void printList(Node<Integer> node) {
+    public static void printList(Node<Integer> node)
+    {
         Node<Integer> temp = node;
 
-        while(temp!=null){
+        while (temp != null)
+        {
             System.out.print(temp.data + " ");
             temp = temp.next;
         }
     }
 
-    public static void printListWithRandom(Node<Integer> node) {
+    public static void printListWithRandom(Node<Integer> node)
+    {
         Node<Integer> temp = node;
 
-        while(temp!=null){
-            System.out.print(temp.data + "(" + (temp.random==null?"X":temp.random.data)+") ");
+        while (temp != null)
+        {
+            System.out.print(
+                temp.data + "(" + (temp.random == null ? "X" : temp.random.data) + ") ");
             temp = temp.next;
         }
     }

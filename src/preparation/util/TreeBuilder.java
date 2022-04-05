@@ -1,9 +1,10 @@
 package preparation.util;
 
-import preparation.util.Node;
+public class TreeBuilder
+{
 
-public class TreeBuilder {
-    public static <T> Node<T> buildTree(){
+    public static <T> Node<T> buildTree()
+    {
         /* Construct the following tree
                    1
                  /   \
@@ -29,7 +30,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree1(){
+    public static <T> Node<T> buildTree1()
+    {
         Node root = new Node(20);
         root.left = new Node(8);
         root.right = new Node(22);
@@ -43,7 +45,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree2(){
+    public static <T> Node<T> buildTree2()
+    {
         /* Construct the following tree
                    1
                  /    \
@@ -68,7 +71,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree3(){
+    public static <T> Node<T> buildTree3()
+    {
         /* Construct the following tree
                    1
                  /    \
@@ -89,7 +93,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree4(){
+    public static <T> Node<T> buildTree4()
+    {
         Node root = new Node(44);
         root.left = new Node(9);
         root.right = new Node(13);
@@ -101,7 +106,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree5(){
+    public static <T> Node<T> buildTree5()
+    {
         /* Construct the following tree
               1
             /   \
@@ -120,7 +126,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree6(){
+    public static <T> Node<T> buildTree6()
+    {
          /* Construct the following tree
                     1
                  /     \
@@ -145,7 +152,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree7(){
+    public static <T> Node<T> buildTree7()
+    {
         /* Construct the following tree
                      1
                    /   \
@@ -170,7 +178,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree8(){
+    public static <T> Node<T> buildTree8()
+    {
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
@@ -186,7 +195,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree9(){
+    public static <T> Node<T> buildTree9()
+    {
         /* Construct the following tree
                      1
                    /   \
@@ -210,7 +220,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree10(){
+    public static <T> Node<T> buildTree10()
+    {
         /* Construct the following tree
                     1
                   /   \
@@ -241,7 +252,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree11(){
+    public static <T> Node<T> buildTree11()
+    {
          /* Construct the following tree
                    2
                  /   \
@@ -262,7 +274,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree12(){
+    public static <T> Node<T> buildTree12()
+    {
          /* Construct the following tree
                    1
                  /   \
@@ -287,7 +300,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree13(){
+    public static <T> Node<T> buildTree13()
+    {
          /* Construct the following tree
                      1
                   /   \
@@ -311,7 +325,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree14(){
+    public static <T> Node<T> buildTree14()
+    {
         /* Construct the following tree
                      1
                   /   \
@@ -342,7 +357,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public  static <T> Node<T> buildTree15(){
+    public static <T> Node<T> buildTree15()
+    {
         Node root = new Node(15);
         root.right = new Node(30);
         root.right.left = new Node(25);
@@ -351,7 +367,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree16(){
+    public static <T> Node<T> buildTree16()
+    {
         Node root = new Node("+");
         root.left = new Node("×");
         root.right = new Node("/");
@@ -364,7 +381,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree17(){
+    public static <T> Node<T> buildTree17()
+    {
         Node root = new Node(25);
         root.left = new Node(8);
         root.right = new Node(10);
@@ -376,7 +394,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree18(){
+    public static <T> Node<T> buildTree18()
+    {
          /* Construct the following tree
                    8
                  /   \
@@ -398,7 +417,8 @@ public class TreeBuilder {
         return root;
     }
 
-    public static <T> Node<T> buildTree19(){
+    public static <T> Node<T> buildTree19()
+    {
         /* Construct the following tree
                   40
                 /    \

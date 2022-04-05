@@ -1,18 +1,19 @@
 package preparation.graph;
 
-import preparation.util.Edge;
-import preparation.util.Graph;
-import preparation.util.Pair;
-
 import java.util.Arrays;
 import java.util.List;
+import preparation.util.Edge;
+import preparation.util.Graph;
 
-public class Test13CheckIfGraphIs2EdgeConnected {
-    public static void main(String[] args) {
+public class Test13CheckIfGraphIs2EdgeConnected
+{
+
+    public static void main(String[] args)
+    {
         List<Edge<Integer>> edges = Arrays.asList(
-                new Edge(0, 2), new Edge(1, 2),
-                new Edge(2, 3), new Edge(2, 4),
-                new Edge(3, 4), new Edge(3, 5)
+            new Edge(0, 2), new Edge(1, 2),
+            new Edge(2, 3), new Edge(2, 4),
+            new Edge(3, 4), new Edge(3, 5)
         );
 
         // total number of nodes in the graph
@@ -24,25 +25,35 @@ public class Test13CheckIfGraphIs2EdgeConnected {
     }
 
     /*
-    A graph is NOT called 2 edge connected graph, if removal of any edge (we can call such edges as bridge also) (note not removal of
-    vertices) results in  disconnected graph (a graph is connected if any vertex can be reached from any other vertex). One naive
-    approach is to iterate edges list and for each edge removal, do dfs or bfs against all vertices and check if there is any
-    vertex which remains unvisited. If yes, then the graph is NOT 2 edge disconnected. However, this approach is too lengthy so
-    another approach is to maintain a noOfEdges array in which against each vertex(index) note the edge connected to it and
-    fill in noOfEdges array. If for any index, the number of edge is equal to 1, then the graph is NOT 2-edge connected graph
+    A graph is NOT called 2 edge connected graph, if removal of any edge (we can call such edges
+    as bridge also) (note not removal of
+    vertices) results in  disconnected graph (a graph is connected if any vertex can be reached
+    from any other vertex). One naive
+    approach is to iterate edges list and for each edge removal, do dfs or bfs against all
+    vertices and check if there is any
+    vertex which remains unvisited. If yes, then the graph is NOT 2 edge disconnected. However,
+    this approach is too lengthy so
+    another approach is to maintain a noOfEdges array in which against each vertex(index) note
+    the edge connected to it and
+    fill in noOfEdges array. If for any index, the number of edge is equal to 1, then the graph
+    is NOT 2-edge connected graph
      */
-    private static boolean checkIfGraphIs2EdgeConnected(Graph graph, int n) {
+    private static boolean checkIfGraphIs2EdgeConnected(Graph graph, int n)
+    {
         int[] noOfEdges = new int[n];
         boolean[] visited = new boolean[n];
 
-        for(int i=0;i<n; i++){
-            noOfEdges[i] =graph.adjList.get(i).size();
+        for (int i = 0; i < n; i++)
+        {
+            noOfEdges[i] = graph.adjList.get(i).size();
         }
 
         boolean bridgeFound = false;
 
-        for(int i=0; i< noOfEdges.length; i++){
-            if(noOfEdges[i] == 1){
+        for (int i = 0; i < noOfEdges.length; i++)
+        {
+            if (noOfEdges[i] == 1)
+            {
                 bridgeFound = true;
 
                 //find associated bridge
@@ -50,10 +61,13 @@ public class Test13CheckIfGraphIs2EdgeConnected {
             }
         }
 
-        if(bridgeFound)
+        if (bridgeFound)
+        {
             System.out.println("Graph is 2-edge connected");
-        else
+        } else
+        {
             System.out.println("Graph is not 2-edge connected");
+        }
 
         return false;
     }

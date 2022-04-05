@@ -1,13 +1,15 @@
 package preparation.bst;
 
+import java.util.Stack;
 import preparation.tree.Test01InorderTraversal;
 import preparation.util.Node;
 import preparation.util.NodeWrapper;
 
-import java.util.Stack;
+public class Test16SwapNodeToConvertToBST
+{
 
-public class Test16SwapNodeToConvertToBST {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         int[] keys = {15, 10, 20, 8, 12, 16, 25};
  
         /* Construct the following BST
@@ -43,25 +45,31 @@ public class Test16SwapNodeToConvertToBST {
 
     }
 
-    private static void correctBSTIterative(Node<Integer> root) {
+    private static void correctBSTIterative(Node<Integer> root)
+    {
         Node<Integer> curr = root;
         Stack<Node<Integer>> st = new Stack<>();
         Node<Integer> prevNode = null;
         Node<Integer> incorrectNode1 = null;
         Node<Integer> incorrectNode2 = null;
 
-        while(null!=curr || !st.isEmpty()){
-            while(null!=curr){
+        while (null != curr || !st.isEmpty())
+        {
+            while (null != curr)
+            {
                 st.push(curr);
-                curr =curr.left;
+                curr = curr.left;
             }
 
             curr = st.pop();
 
-            if(prevNode!=null && curr.data <= prevNode.data){
-                if(incorrectNode1==null){
+            if (prevNode != null && curr.data <= prevNode.data)
+            {
+                if (incorrectNode1 == null)
+                {
                     incorrectNode1 = prevNode;
-                }else{
+                } else
+                {
                     incorrectNode2 = curr;
                 }
             }
@@ -75,16 +83,23 @@ public class Test16SwapNodeToConvertToBST {
         swapData(incorrectNode1, incorrectNode2);
     }
 
-    private static void correctBST(Node<Integer> root, NodeWrapper<Integer> prevNode, NodeWrapper<Integer> incorrectlyMappedNode1,
-                                   NodeWrapper<Integer> incorrectlyMappedNode2) {
-        if(root == null)
+    private static void correctBST(Node<Integer> root, NodeWrapper<Integer> prevNode,
+        NodeWrapper<Integer> incorrectlyMappedNode1,
+        NodeWrapper<Integer> incorrectlyMappedNode2)
+    {
+        if (root == null)
+        {
             return;
+        }
 
         correctBST(root.left, prevNode, incorrectlyMappedNode1, incorrectlyMappedNode2);
-        if(null!=prevNode && root.data <= prevNode.node.data){
-            if(incorrectlyMappedNode1.node!=null){
+        if (null != prevNode && root.data <= prevNode.node.data)
+        {
+            if (incorrectlyMappedNode1.node != null)
+            {
                 incorrectlyMappedNode2.node = root;
-            }else{
+            } else
+            {
                 incorrectlyMappedNode1.node = prevNode.node;
             }
         }
@@ -92,7 +107,8 @@ public class Test16SwapNodeToConvertToBST {
         correctBST(root.right, prevNode, incorrectlyMappedNode1, incorrectlyMappedNode2);
     }
 
-    public static void swapData(Node<Integer> first, Node<Integer> second) {
+    public static void swapData(Node<Integer> first, Node<Integer> second)
+    {
         int data = first.data;
         first.data = second.data;
         second.data = data;

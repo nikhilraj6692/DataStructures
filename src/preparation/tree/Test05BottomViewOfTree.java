@@ -1,14 +1,22 @@
 package preparation.tree;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.TreeMap;
 import preparation.util.Node;
 import preparation.util.Pair;
 import preparation.util.TreeBuilder;
 
-import java.util.*;
-
 //find horizontal distance at each level and print last node at that level
-public class Test05BottomViewOfTree {
-    public static void main(String[] args) {
+public class Test05BottomViewOfTree
+{
+
+    public static void main(String[] args)
+    {
         Node node = TreeBuilder.buildTree();
         findBottomViewOfTree(node);
 
@@ -24,67 +32,81 @@ public class Test05BottomViewOfTree {
         System.out.println();
 
         node2 = TreeBuilder.buildTree2();
-        Map<Integer, Pair<Node,Integer>> map =new TreeMap<>();
-        traverseDFSWise(map,0, 0, Pair.of(node2, 0), node2);
-        Collection<Pair<Node,Integer>> values=map.values();
-        values.stream().forEach(x->System.out.print(x.first+" "));
+        Map<Integer, Pair<Node, Integer>> map = new TreeMap<>();
+        traverseDFSWise(map, 0, 0, Pair.of(node2, 0), node2);
+        Collection<Pair<Node, Integer>> values = map.values();
+        values.stream().forEach(x -> System.out.print(x.first + " "));
 
     }
 
     /*
-    for recursive we have to check two things...one is the horizontal distance for sure and another is level...
-    if map does not contain horizontal distance, then put it into map, there is one more case...suppose we have
-    a node with a horizontal distance in map but for another node having same horizontal distance, if level is more
+    for recursive we have to check two things...one is the horizontal distance for sure and
+    another is level...
+    if map does not contain horizontal distance, then put it into map, there is one more case..
+    .suppose we have
+    a node with a horizontal distance in map but for another node having same horizontal
+    distance, if level is more
     then update map entry...do a preorder traversal
      */
-    private static void traverseDFSWise(Map<Integer, Pair<Node,Integer>> map, int hd, int level, Pair<Node,Integer> pair, Node node) {
-        if(node==null)
+    private static void traverseDFSWise(Map<Integer, Pair<Node, Integer>> map, int hd, int level,
+        Pair<Node, Integer> pair, Node node)
+    {
+        if (node == null)
+        {
             return;
+        }
 
-        map.compute(hd, (key,val)->{
-           if(val==null) {
+        map.compute(hd, (key, val) -> {
+            if (val == null)
+            {
                 val = Pair.of(node, level);
-           }else {
-               if(level>pair.second){
-                   val = Pair.of(node, level);
-               }
-           }
-           return val;
+            } else
+            {
+                if (level > pair.second)
+                {
+                    val = Pair.of(node, level);
+                }
+            }
+            return val;
         });
-        traverseDFSWise(map,hd-1, level+1, pair,node.left);
-        traverseDFSWise(map,hd+1, level+1, pair,node.right);
+        traverseDFSWise(map, hd - 1, level + 1, pair, node.left);
+        traverseDFSWise(map, hd + 1, level + 1, pair, node.right);
 
     }
 
-    private static void findBottomViewOfTree(Node node) {
+    private static void findBottomViewOfTree(Node node)
+    {
         Map<Integer, Node> map = new TreeMap<>();
-        Queue<Node> queue =new LinkedList<>();
+        Queue<Node> queue = new LinkedList<>();
         node.hd = 0;
         map.put(node.hd, node);
         queue.add(node);
 
         Node temp = null;
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty())
+        {
             temp = queue.poll();
             int hd = temp.hd;
 
-            if(null!= temp.left){
-                map.put(hd-1, temp.left);
-                temp.left.hd = hd -1;
+            if (null != temp.left)
+            {
+                map.put(hd - 1, temp.left);
+                temp.left.hd = hd - 1;
                 queue.add(temp.left);
             }
 
-            if(null!= temp.right){
-                map.put(hd+1, temp.right);
-                temp.right.hd = hd +1;
+            if (null != temp.right)
+            {
+                map.put(hd + 1, temp.right);
+                temp.right.hd = hd + 1;
                 queue.add(temp.right);
             }
         }
 
         List<Integer> arrayList = new ArrayList<>();
 
-        Collection<Node> values=map.values();
-        values.stream().forEach(x->System.out.print(x+" "));
+        Collection<Node> values = map.values();
+        values.stream().forEach(x -> System.out.print(x + " "));
         /*map.entrySet().stream().sorted(Map.Entry.comparingByKey()).forEach(x->{
             System.out.println(x.getKey() +  " " + x.getValue().data);
             arrayList.add((int)x.getValue().data);

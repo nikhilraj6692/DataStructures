@@ -17,17 +17,21 @@ public class Test42OperationsToMakeArrayElementsEqual
     {
         int max = Integer.MIN_VALUE;
 
-        for(int num : A){
+        for (int num : A)
+        {
             max = Math.max(max, num);
         }
 
         Set<Integer> possibleValues = new HashSet<>();
-        possibleValues.add(max-B);
-        possibleValues.add(max+B);
+        possibleValues.add(max - B);
+        possibleValues.add(max + B);
         possibleValues.add(max);
 
-        for(int num : A){
-            if(!possibleValues.contains(num+B) && !possibleValues.contains(num-B) && !possibleValues.contains(num)){
+        for (int num : A)
+        {
+            if (!possibleValues.contains(num + B) && !possibleValues.contains(num - B)
+                && !possibleValues.contains(num))
+            {
                 return 0;
             }
         }

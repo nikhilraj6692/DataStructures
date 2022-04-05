@@ -3,20 +3,28 @@ package preparation.tree;
 import preparation.util.Node;
 import preparation.util.TreeBuilder;
 
-public class Test29CreateLinkForInorderSuccessors {
-    public static void main(String[] args) {
+public class Test29CreateLinkForInorderSuccessors
+{
+
+    public static void main(String[] args)
+    {
         Node<Integer> node = TreeBuilder.buildTree();
 
         findAndLinkInorderSuccessor(node);
 
-        while(node.left!=null){
-            node=node.left;
+        while (node.left != null)
+        {
+            node = node.left;
         }
-        while(null!=node && node.data!=-1){
-            if(node.next == null){
+        while (null != node && node.data != -1)
+        {
+            if (node.next == null)
+            {
                 System.out.println("The inorder successor of node " + node.data + " is " + -1);
-            }else {
-                System.out.println("The inorder successor of node " + node.data + " is " + node.next.data);
+            } else
+            {
+                System.out.println(
+                    "The inorder successor of node " + node.data + " is " + node.next.data);
             }
             node = node.next;
         }
@@ -24,10 +32,13 @@ public class Test29CreateLinkForInorderSuccessors {
 
     private static Node<Integer> processedNode = null;
 
-    private static void findAndLinkInorderSuccessor(Node<Integer> node) {
-        if(node!=null) {
+    private static void findAndLinkInorderSuccessor(Node<Integer> node)
+    {
+        if (node != null)
+        {
             findAndLinkInorderSuccessor(node.left);
-            if(processedNode.data!=null){
+            if (processedNode.data != null)
+            {
                 processedNode.next = node;
             }
 

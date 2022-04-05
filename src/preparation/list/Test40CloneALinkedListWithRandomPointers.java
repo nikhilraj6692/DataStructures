@@ -3,8 +3,11 @@ package preparation.list;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Test40CloneALinkedListWithRandomPointers {
-    public static void main(String[] args) {
+public class Test40CloneALinkedListWithRandomPointers
+{
+
+    public static void main(String[] args)
+    {
         Node head = new Node(1);
         head.next = new Node(2);
         head.next.next = new Node(3);
@@ -26,12 +29,16 @@ public class Test40CloneALinkedListWithRandomPointers {
         Test01ListIntro.printListWithRandom(temp);
     }
 
-    //create a list such that the list contains the items with main list and its duplicate adjacently
-    private static Node<Integer> cloneLinkedListWithoutHashing(Node head) {
-        //create a list such that the list contains the items with main list and its duplicate adjacently
+    //create a list such that the list contains the items with main list and its duplicate
+    // adjacently
+    private static Node<Integer> cloneLinkedListWithoutHashing(Node head)
+    {
+        //create a list such that the list contains the items with main list and its duplicate
+        // adjacently
         Node<Integer> curr = head;
 
-        while(null!=curr){
+        while (null != curr)
+        {
             Node next = curr.next;
             curr.next = new Node(curr.data);
             curr = curr.next;
@@ -44,49 +51,64 @@ public class Test40CloneALinkedListWithRandomPointers {
         Node headNode = null;
         Node temp = null;
 
-        while(null!=curr){
-            if(null == headNode){
+        while (null != curr)
+        {
+            if (null == headNode)
+            {
                 headNode = curr.next;
                 temp = headNode;
-            }else{
+            } else
+            {
                 temp.next = curr.next;
                 temp = temp.next;
             }
 
-            if(null!=curr.random){
+            if (null != curr.random)
+            {
                 curr.next.random = curr.random.next;
             }
             curr = curr.next.next;
         }
 
-
         return headNode;
     }
 
-    private static Node<Integer> cloneLinkedListWithOneTraversalAndHashingRecursive(Node head, Map<Node,Node> map) {
+    private static Node<Integer> cloneLinkedListWithOneTraversalAndHashingRecursive(Node head,
+        Map<Node, Node> map)
+    {
         Node<Integer> temp = head;
         temp = cloneLinkedList(temp, map);
         temp = head;
-        temp = cloneLinkedListWithRandomPointer(temp,map);
+        temp = cloneLinkedListWithRandomPointer(temp, map);
         return temp;
     }
 
-    private static Node<Integer> cloneLinkedListWithRandomPointer(Node<Integer> temp, Map<Node, Node> map) {
-        if(null == temp)
+    private static Node<Integer> cloneLinkedListWithRandomPointer(Node<Integer> temp,
+        Map<Node, Node> map)
+    {
+        if (null == temp)
+        {
             return null;
+        }
 
-        if(temp.random != null){
-            map.get(temp).random = cloneLinkedListWithOneTraversalAndHashingRecursive(temp.random, map);
+        if (temp.random != null)
+        {
+            map.get(temp).random = cloneLinkedListWithOneTraversalAndHashingRecursive(temp.random,
+                map);
         }
 
         return temp;
     }
 
-    private static Node<Integer> cloneLinkedList(Node<Integer> temp, Map<Node, Node> map) {
-        if(null == temp)
+    private static Node<Integer> cloneLinkedList(Node<Integer> temp, Map<Node, Node> map)
+    {
+        if (null == temp)
+        {
             return null;
+        }
 
-        if(map.get(temp) == null){
+        if (map.get(temp) == null)
+        {
             map.put(temp, new Node(temp.data));
         }
 
@@ -95,17 +117,21 @@ public class Test40CloneALinkedListWithRandomPointers {
         return map.get(temp);
     }
 
-    private static Node<Integer> cloneLinkedListWithTwoTravesalsAndHashing(Node head) {
+    private static Node<Integer> cloneLinkedListWithTwoTravesalsAndHashing(Node head)
+    {
         Node<Integer> temp = null;
         Node<Integer> curr = head;
         Map<Node<Integer>, Node<Integer>> map = new HashMap<>();
         Node<Integer> clonedHead = null;
 
-        while(null!=curr){
-            if(temp == null){
+        while (null != curr)
+        {
+            if (temp == null)
+            {
                 temp = new Node(curr.data);
                 clonedHead = temp;
-            }else{
+            } else
+            {
                 temp.next = new Node<>(curr.data);
                 temp = temp.next;
             }
@@ -118,8 +144,10 @@ public class Test40CloneALinkedListWithRandomPointers {
         curr = head;
         temp = clonedHead;
 
-        while(null!=curr){
-            if(curr.random!=null){
+        while (null != curr)
+        {
+            if (curr.random != null)
+            {
                 temp.random = map.get(curr.random);
             }
             curr = curr.next;

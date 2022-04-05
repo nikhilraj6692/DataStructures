@@ -1,20 +1,20 @@
 package preparation.dynamicprogramming;
 
-import java.awt.event.MouseAdapter;
-import java.util.HashSet;
-import java.util.Set;
-
 /*
-To check if a number is ugly, divide the number by greatest divisible powers of 2, 3 and 5, if the number
+To check if a number is ugly, divide the number by greatest divisible powers of 2, 3 and 5, if
+the number
 becomes 1 then it is an ugly number otherwise not.
  */
-public class Test02UglyNumbers {
-    public static void main(String[] args) {
+public class Test02UglyNumbers
+{
+
+    public static void main(String[] args)
+    {
         int no = getNthUglyNo(150);
 
         // Function call
         System.out.println("150th ugly "
-                + "no. is " + no);
+            + "no. is " + no);
 
         //dynamic programming method
         /*
@@ -61,10 +61,11 @@ public class Test02UglyNumbers {
          */
         no = getNthNoByDP(150);
         System.out.println("150th ugly "
-                + "no. is " + no);
+            + "no. is " + no);
     }
 
-    private static int getNthNoByDP(int num) {
+    private static int getNthNoByDP(int num)
+    {
         int two, three, five;
         two = three = five = 0;
 
@@ -78,20 +79,24 @@ public class Test02UglyNumbers {
         int min = Integer.MIN_VALUE;
 
         int count = 1;
-        while(count < num){
+        while (count < num)
+        {
             min = Math.min(nextMultiple2, Math.min(nextMultiple3, nextMultiple5));
             ugly[count] = min;
 
             //if minimum is of 2, then next number should be 2*whatever previous number was there
-            if(min == nextMultiple2){
+            if (min == nextMultiple2)
+            {
                 two++;
                 nextMultiple2 = ugly[two] * 2;
             }
-            if(min == nextMultiple3){
+            if (min == nextMultiple3)
+            {
                 three++;
                 nextMultiple3 = ugly[three] * 3;
             }
-            if(min == nextMultiple5){
+            if (min == nextMultiple5)
+            {
                 five++;
                 nextMultiple5 = ugly[five] * 5;
             }
@@ -102,18 +107,22 @@ public class Test02UglyNumbers {
         return min;
     }
 
-    private static int getNthUglyNo(int n) {
+    private static int getNthUglyNo(int n)
+    {
         int count = 0;
         int num = 1;
-        while(count < n){
+        while (count < n)
+        {
             int num1 = num;
             num1 = factorizeWith2(num1, 2);
             num1 = factorizeWith2(num1, 3);
             num1 = factorizeWith2(num1, 5);
 
-            if(num1 == 1 && count == 149){
+            if (num1 == 1 && count == 149)
+            {
                 return num;
-            }else if(num1 == 1){
+            } else if (num1 == 1)
+            {
                 count++;
             }
 
@@ -123,9 +132,11 @@ public class Test02UglyNumbers {
         return count;
     }
 
-    private static int factorizeWith2(int num, int fact) {
-        while(num%fact == 0){
-            num = num/fact;
+    private static int factorizeWith2(int num, int fact)
+    {
+        while (num % fact == 0)
+        {
+            num = num / fact;
         }
 
         return num;

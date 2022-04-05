@@ -9,8 +9,8 @@ public class Test18AddTwoArrays
 
     public static void main(String[] args)
     {
-        ArrayList<Integer> finalList = addArrays(new ArrayList<>(Arrays.asList(3,0,5 )),
-            new ArrayList<>(Arrays.asList(3,6)));
+        ArrayList<Integer> finalList = addArrays(new ArrayList<>(Arrays.asList(3, 0, 5)),
+            new ArrayList<>(Arrays.asList(3, 6)));
         System.out.println(finalList);
     }
 
@@ -18,11 +18,11 @@ public class Test18AddTwoArrays
     {
         ArrayList<Integer> finalList = new ArrayList<>();
 
-        int ALen = A.size()-1;
-        int BLen = B.size()-1;
+        int ALen = A.size() - 1;
+        int BLen = B.size() - 1;
 
         int carry = 0;
-        while (ALen>=0 && BLen>=0)
+        while (ALen >= 0 && BLen >= 0)
         {
             int sum = A.get(ALen) + B.get(BLen) + carry;
 
@@ -41,7 +41,7 @@ public class Test18AddTwoArrays
             BLen--;
         }
 
-        if (ALen>=0)
+        if (ALen >= 0)
         {
             for (int i = ALen; i >= 0; i--)
             {
@@ -58,7 +58,7 @@ public class Test18AddTwoArrays
                     carry = 0;
                 }
             }
-        } else if (BLen>=0)
+        } else if (BLen >= 0)
         {
             for (int i = BLen; i >= 0; i--)
             {
