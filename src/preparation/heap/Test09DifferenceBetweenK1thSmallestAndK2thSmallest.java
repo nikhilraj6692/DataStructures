@@ -1,5 +1,6 @@
 package preparation.heap;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Test09DifferenceBetweenK1thSmallestAndK2thSmallest
@@ -26,7 +27,7 @@ public class Test09DifferenceBetweenK1thSmallestAndK2thSmallest
      */
     private static int sumBetweenTwoKth(int[] arr, int k1, int k2)
     {
-        PriorityQueue<Integer> q = new PriorityQueue<>((o1, o2) -> o2.compareTo(o1));
+        PriorityQueue<Integer> q = new PriorityQueue<>(Comparator.reverseOrder());
         int max = Math.max(k1, k2);
 
         for (int i = 0; i < arr.length; i++)

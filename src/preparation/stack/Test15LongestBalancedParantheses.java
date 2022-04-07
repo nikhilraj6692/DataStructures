@@ -85,7 +85,7 @@ public class Test15LongestBalancedParantheses
     /*
     one solution is to find all substrings of the given str and check all the strings produced if
      they are balanced or not.
-    if balanced then update the length of string to max if it is greater than max. seond approach
+    if balanced then update the length of string to max if it is greater than max. second approach
      is to use stack. we have to
     push -1 first to the stack. And iterate from 0 to n-1, if '(' found then push its index to
     stack. if ')' found then, pop

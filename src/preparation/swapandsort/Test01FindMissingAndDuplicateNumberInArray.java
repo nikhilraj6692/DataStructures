@@ -1,8 +1,10 @@
 package preparation.swapandsort;
 
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class Test01FindMissingAndDuplicateNumberInArray
 {
@@ -81,7 +83,7 @@ public class Test01FindMissingAndDuplicateNumberInArray
                 System.out.println("Repeated number is " + arr[i]);
                 System.out.println("Missing number is " + (i + 1));
                 //if there is more than one missing and repeated number, then remove this break;
-                //break;
+                break;
             }
         }
     }
@@ -95,6 +97,8 @@ public class Test01FindMissingAndDuplicateNumberInArray
                 i++;
             } else
             {
+                //crucial swap...check here. temp is not assigned to arr[arr[i]-1], since arr[i] value is already assigned to
+                //arr[i]
                 int temp = arr[i];
                 arr[i] = arr[arr[i] - 1];
                 arr[temp - 1] = temp;
