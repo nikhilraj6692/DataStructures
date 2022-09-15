@@ -28,7 +28,7 @@ public class Test10StringPermutation
 
     public static void main(String[] args)
     {
-        System.out.print(findPerm("ID", 3));
+        System.out.print(findPerm("IDDD", 5));
     }
 
     public static ArrayList<Integer> findPerm(final String A, int B)

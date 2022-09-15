@@ -1,11 +1,8 @@
 package preparation.list;
 
 /*
-in this program we are going to copy list with the help of temp node...in case of iterative impl,
- just assure that if
-temp==null, jthen keep a pointer of clonedhead otherise just use temp.next = new Node() and for
-recursion just use
-temp
+in this program we are going to copy list with the help of temp node...in case of iterative impl, just assure that if temp==null,
+then keep a pointer of clonedHead otherwise just use temp.next = new Node() and for recursion just use temp
  */
 public class Test02CopyList
 {

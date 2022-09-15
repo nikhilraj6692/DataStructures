@@ -8,7 +8,7 @@ public class Test30RearrangeNodesInEvenAndOdd
 
     public static void main(String[] args)
     {
-        int[] keys = {1, 2, 3};
+        int[] keys = {1, 2, 3, 4};
         Node<Integer> head = ListBuilder.createLinkedList(keys);
         Test01ListIntro.printList(rearrangeInEvenAndOdd(head));
 

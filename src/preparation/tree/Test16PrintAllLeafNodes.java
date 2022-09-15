@@ -23,7 +23,7 @@ public class Test16PrintAllLeafNodes
         Queue<Node> q = new LinkedList<>();
         q.add(root);
 
-        Node<Integer> temp = null;
+        Node<Integer> temp;
         while (!q.isEmpty())
         {
             temp = q.poll();

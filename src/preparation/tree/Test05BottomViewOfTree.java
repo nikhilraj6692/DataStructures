@@ -37,6 +37,11 @@ public class Test05BottomViewOfTree
         Collection<Pair<Node, Integer>> values = map.values();
         values.stream().forEach(x -> System.out.print(x.first + " "));
 
+        node2 = TreeBuilder.buildTree2();
+        Map<Integer, Integer> map1= new TreeMap<>();
+        traverseDFSWise(map1, 0,  node2);
+        System.out.println(map1.values());
+
     }
 
     /*
@@ -71,6 +76,19 @@ public class Test05BottomViewOfTree
         });
         traverseDFSWise(map, hd - 1, level + 1, pair, node.left);
         traverseDFSWise(map, hd + 1, level + 1, pair, node.right);
+
+    }
+
+    private static void traverseDFSWise(Map<Integer, Integer> map, int hd, Node node)
+    {
+        if (node == null)
+        {
+            return;
+        }
+
+        map.put(hd, (int)node.data);
+        traverseDFSWise(map, hd - 1,  node.left);
+        traverseDFSWise(map, hd + 1,  node.right);
 
     }
 

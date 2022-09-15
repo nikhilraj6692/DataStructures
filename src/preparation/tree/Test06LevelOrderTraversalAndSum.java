@@ -3,6 +3,7 @@ package preparation.tree;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import preparation.util.Node;
@@ -27,8 +28,42 @@ public class Test06LevelOrderTraversalAndSum
     {
         Node node = TreeBuilder.buildTree();
         traverseLevelWise(node);
+        traverseBFS(node);
         System.out.println();
 
+    }
+
+    private static void traverseBFS(Node node) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+        int level = 0;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            int cnt = 0;
+
+            while(cnt < size){
+                Node temp = queue.poll();
+                if(map.containsKey(level)){
+                    int sum = (int)temp.data + map.get(level);
+                    map.put(level, sum);
+                }else{
+                    map.put(level, (int)temp.data);
+                }
+                if(temp.left!=null){
+                    queue.add(temp.left);
+                }
+
+                if(temp.right!=null){
+                    queue.add(temp.right);
+                }
+                cnt++;
+
+            }
+            level++;
+        }
+
+        System.out.println(map.values());
     }
 
     public static void traverseLevelWise(Node<Integer> node)
