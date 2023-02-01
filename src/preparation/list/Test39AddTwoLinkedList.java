@@ -34,6 +34,37 @@ public class Test39AddTwoLinkedList
         Node<Integer> curr2 = head2;
         Node prevNode = null;
 
+        /*
+        instead of three while loops, this can be used in a similar way
+        class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode p=new ListNode(-1);
+        ListNode p2=p;
+        int sum=0,c=0;
+        while(l1!= null || l2!=null || c == 1)
+        // here c=1 too cause if in last if sum>=10 then this loop should run one more time
+        {
+            sum=0;
+            if(l1!=null)
+            {
+                sum+=l1.val;
+                l1=l1.next;
+            }
+            if(l2!=null)
+            {
+                sum+=l2.val;
+                l2=l2.next;
+            }
+            sum+=c;
+            c=sum/10;
+            ListNode node = new ListNode(sum % 10);
+            p2.next=node;
+            p2=p2.next;
+        }
+        return p.next;
+    }
+}
+         */
         while (curr1 != null && curr2 != null)
         {
             int data1 = curr1.data;

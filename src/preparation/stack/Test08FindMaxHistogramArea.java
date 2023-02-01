@@ -8,7 +8,7 @@ public class Test08FindMaxHistogramArea
 
     public static void main(String[] args)
     {
-        int hist[] = {6, 2, 5, 4, 5, 1, 6};
+        int hist[] = {3,1,3,2,2};
         System.out.println("\nMaximum area is " + getMaxArea(hist, hist.length));
     }
 
@@ -20,10 +20,17 @@ public class Test08FindMaxHistogramArea
         //find next index minimum to the right
         int[] right = new int[length];
         findNextMinimumToTheRight(hist, length, right);
-
+        for(int num:right){
+            System.out.print(num + " ");
+        }
+System.out.println();
         //find next index minimum to the left
         int[] left = new int[length];
         findNextMinimumToTheLeft(hist, length, left);
+        for(int num:left){
+            System.out.print(num + " ");
+        }
+        System.out.println();
 
         for (int i = 0; i < length; i++)
         {

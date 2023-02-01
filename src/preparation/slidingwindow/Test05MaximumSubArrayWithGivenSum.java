@@ -10,9 +10,9 @@ public class Test05MaximumSubArrayWithGivenSum
      */
     public static void main(String[] args)
     {
-        int[] arr = {10, 5, 2, 7, 1, 9};
+        int[] arr = {2,3,1,2,4,3};
         int n = arr.length;
-        int k = 15;
+        int k = 7;
         System.out.println("Length = " +
             lenOfLongSubarr(arr, n, k));
     }

@@ -1,6 +1,7 @@
 package preparation.tree;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,26 @@ public class Test07TopViewOfTree
 
         node = TreeBuilder.buildTree2();
         findTopViewOfTree(node);
+
+        node = TreeBuilder.buildTree2();
+        Map<Integer, Integer> map = new TreeMap<>();
+        int hd = 0;
+        findTopViewOfTreeRecursive(node, map, hd);
+        System.out.println(map.values());
+
+
+    }
+
+
+    private static void findTopViewOfTreeRecursive(Node node, Map<Integer, Integer> map, int hd) {
+        if(null == node)
+            return;
+        if(!map.containsKey(hd)){
+            map.put(hd, (int)node.data);
+        }
+
+        findTopViewOfTreeRecursive(node.left, map, hd-1);
+        findTopViewOfTreeRecursive(node.right, map, hd+1);
     }
 
     /*

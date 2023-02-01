@@ -23,7 +23,7 @@ public class Test01KthSmallestElement
         System.out.println("\n==============================\n");
         arr = new int[]{12, 3, 5, 7, 19};
         System.out.print("K'th smallest element is " + kthSmallestWithMaxHeap(arr, k));
-    }
+}
 
     /*
     in max heap, largest is at top. So, build a priority queue with largest at the top

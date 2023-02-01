@@ -17,6 +17,25 @@ public class Test08FindInPlaceSumOfTree
         Test02PreorderTraversal.preorderTraversal(node);
 
         System.out.println();
+
+        node = new Node<>(1);
+        node.left = new Node<>(2);
+        node.right = new Node<>(3);
+
+        findInPlaceSumOfTree(node);
+        Test02PreorderTraversal.preorderTraversal(node);
+
+        System.out.println();
+
+        node = new Node<>(1);
+        node.left = new Node<>(2);
+        node.right = new Node<>(3);
+
+        toSumTree(node);
+        Test02PreorderTraversal.preorderTraversal(node);
+
+        System.out.println();
+
         node = TreeBuilder.buildTree2();
         toSumTree(node);
         Test02PreorderTraversal.preorderTraversal(node);
