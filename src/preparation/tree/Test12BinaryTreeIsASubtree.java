@@ -7,7 +7,7 @@ import preparation.util.Node;
 import preparation.util.TreeBuilder;
 
 /*
-inorder and postorder or inorder and preorder is a length method...we can solve by checking for
+inorder and postorder or inorder and preorder is a lengthy method...we can solve by checking for
 each node with
 the subtree node. if data matches, it means that we have to go to check if left and right is also
  equal..If at

@@ -5,13 +5,14 @@ import java.util.Stack;
 /*
 the algo focusses on using no extra space. for empty stack, push element to the stack and make
 min as element. if stack is not
-empty and data pushed is greater than min, then DONT update min, just push data in stack. but if
+empty and data pushed is greater than min, then DON'T update min, just push data in stack. but if
 the data to be pushed is
 smaller than minimum element, then add corrupted data in the stack as 2*data-min and min becomes
 element which was originally to
 be pushed. to pop, check if the element in the stack is less than min (corrupted data case), then
  min would be 2*min-corrupteddata,
-and val to be popped is min. Same goes for peek.
+and val to be popped is min. Same goes for peek. this is done so that previous min element
+can be retrieved by cuurent min element
  */
 public class Test12MinElementsInStackWithoutExtraSpace
 {

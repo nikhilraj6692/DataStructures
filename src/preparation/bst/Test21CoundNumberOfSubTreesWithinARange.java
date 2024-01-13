@@ -10,6 +10,7 @@ public class Test21CoundNumberOfSubTreesWithinARange
 
     public static void main(String[] args)
     {
+
         int low = 5, high = 20;
 
         // BST keys to construct BST shown in the diagram
